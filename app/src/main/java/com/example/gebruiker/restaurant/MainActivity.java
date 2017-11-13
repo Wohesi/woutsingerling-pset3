@@ -8,6 +8,7 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
@@ -64,14 +65,33 @@ public class MainActivity extends AppCompatActivity {
                             }
                         }
 
-                        ArrayAdapter<String> myAdapter =
+                        ArrayAdapter<String> thisAdapter =
                                 new ArrayAdapter<String>(
                                         getApplicationContext(),
-                                        android.R.layout.simple_list_item_1,
+                                        R.layout.row_layout,
                                         list
                                 );
                         ListView myList = (ListView) findViewById(R.id.mylist);
-                        myList.setAdapter(myAdapter);
+                        myList.setAdapter(thisAdapter);
+
+                        myList.setOnItemClickListener(
+                                new AdapterView.OnItemClickListener() {
+                                    @Override
+                                    public void onItemClick(AdapterView<?> adapterView, View view, int position, long l) {
+                                        String categoryPicked = "You selected " +
+                                                String.valueOf(adapterView.getItemAtPosition(position));
+                                        Toast.makeText(MainActivity.this, categoryPicked, Toast.LENGTH_SHORT).show();
+
+                                        if (position == 0){
+                                            Intent appetizers = new  Intent(view.getContext(), appetizers.class);
+                                            startActivity(appetizers);
+                                        }
+                                        if (position == 1) {
+                                            Intent entrees = new Intent(view.getContext(), entrees.class);
+                                            startActivity(entrees);
+                                        }
+                                    }
+                                });
                     }
                 }, new Response.ErrorListener() {
             @Override
