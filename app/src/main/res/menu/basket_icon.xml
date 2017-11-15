@@ -6,6 +6,7 @@
         android:title="basket"
         android:id="@+id/basket"
         android:icon="@drawable/ic_shopping_basket_black_24dp"
+        android:onClick="basket"
         app:showAsAction="always"/>
 
 </menu>

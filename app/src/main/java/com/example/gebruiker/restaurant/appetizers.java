@@ -5,6 +5,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -44,6 +45,7 @@ public class appetizers extends AppCompatActivity {
 
         final TextView mTextView = (TextView) findViewById(R.id.text);
 
+        /*
         // Instantiate the RequestQueue.
         RequestQueue queue = Volley.newRequestQueue(this);
         String url ="https://resto.mprog.nl/menu";
@@ -104,5 +106,12 @@ public class appetizers extends AppCompatActivity {
         });
         // Add the request to the RequestQueue.
         queue.add(jsonObjectRequest);
+          */
+    }
+
+
+    public void basket(MenuItem item) {
+        Intent basket_screen = new Intent(this, basket_screen.class);
+        startActivity(basket_screen);
     }
 }

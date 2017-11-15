@@ -19,7 +19,8 @@
             </intent-filter>
         </activity>
         <activity android:name=".entrees" />
-        <activity android:name=".appetizers"></activity>
+        <activity android:name=".appetizers" />
+        <activity android:name=".basket_screen"></activity>
     </application>
 
 </manifest>
