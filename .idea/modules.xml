@@ -3,7 +3,8 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
-      <module fileurl="file://$PROJECT_DIR$/.idea/woutsingerling-pset3.iml" filepath="$PROJECT_DIR$/.idea/woutsingerling-pset3.iml" />
+      <module fileurl="file://$PROJECT_DIR$/woutsingerling-pset3.iml" filepath="$PROJECT_DIR$/woutsingerling-pset3.iml" />
+      <module fileurl="file://C:\Users\Wout\Documents\GitHub\woutsingerling-pset3\.idea\woutsingerling-pset3.iml" filepath="C:\Users\Wout\Documents\GitHub\woutsingerling-pset3\.idea\woutsingerling-pset3.iml" />
     </modules>
   </component>
 </project>
