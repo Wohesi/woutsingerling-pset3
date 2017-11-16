@@ -5,4 +5,4 @@
     android:layout_height="wrap_content"
     android:id="@+id/textView1"
     android:padding="15dp"
-    android:textSize="30sp"/>
+    android:textSize="30sp" />

@@ -20,7 +20,6 @@ class myAdapter extends ArrayAdapter<String> {
     }
 
 
-
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
         LayoutInflater theInflater = LayoutInflater.from(getContext());

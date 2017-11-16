@@ -27,6 +27,7 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
@@ -65,7 +66,12 @@ public class MainActivity extends AppCompatActivity {
                         // https://stackoverflow.com/questions/3395729/convert-json-array-to-normal-java-array
                         try {
                             jsonObject = new JSONObject(response.toString());
+
+
                             jsonArray = jsonObject.getJSONArray("categories");
+
+
+
                         } catch (JSONException e) {
                             e.printStackTrace();
                         }
@@ -96,14 +102,9 @@ public class MainActivity extends AppCompatActivity {
                                                 String.valueOf(adapterView.getItemAtPosition(position));
                                         Toast.makeText(MainActivity.this, categoryPicked, Toast.LENGTH_SHORT).show();
 
-                                        if (position == 0){
-                                            Intent appetizers = new  Intent(view.getContext(), appetizers.class);
-                                            startActivity(appetizers);
-                                        }
-                                        if (position == 1) {
-                                            Intent entrees = new Intent(view.getContext(), entrees.class);
-                                            startActivity(entrees);
-                                        }
+                                            Intent intent = new  Intent(view.getContext(), appetizers.class);
+                                            intent.putExtra("category", String.valueOf(adapterView.getItemAtPosition(position)));
+                                            startActivity(intent);
                                     }
                                 });
                     }
