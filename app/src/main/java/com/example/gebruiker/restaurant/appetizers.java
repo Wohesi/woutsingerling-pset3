@@ -103,13 +103,11 @@ public class appetizers extends AppCompatActivity {
                         ListView myList = (ListView) findViewById(R.id.mylist);
                         myList.setAdapter(thisAdapter);
 
-
-
                         myList.setOnItemClickListener(
 
                                 new AdapterView.OnItemClickListener() {
 
-                                   // ArrayList<String> order = new ArrayList<String>();
+                                    //ArrayList<String> order = new ArrayList<String>();
                                     //JSONObject order = new JSONObject();
                                     JSONArray order = new JSONArray();
 
@@ -119,20 +117,15 @@ public class appetizers extends AppCompatActivity {
                                                 String.valueOf(adapterView.getItemAtPosition(position)) + "to your order";
                                         Toast.makeText(appetizers.this, categoryPicked, Toast.LENGTH_SHORT).show();
 
-
                                         order.put(String.valueOf(adapterView.getItemAtPosition(position)));
-                                        //order.put(String.valueOf(adapterView.getItemAtPosition(position),"name"))
-
-                                        System.out.println(order);
-                                        System.out.println(String.valueOf(adapterView.getItemAtPosition(position)));
-
 
 
                                         SharedPreferences prefs = appetizers.this.getSharedPreferences("settings", appetizers.MODE_PRIVATE);
+
                                         SharedPreferences.Editor editor = prefs.edit();
 
-                                        editor.putString("item", String.valueOf(order));
-                                        System.out.println(editor);
+                                        //editor.putString("item", String.valueOf(order));
+                                        editor.putString("order", String.valueOf(order));
                                         editor.commit();
 
 

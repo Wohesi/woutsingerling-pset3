@@ -66,11 +66,7 @@ public class MainActivity extends AppCompatActivity {
                         // https://stackoverflow.com/questions/3395729/convert-json-array-to-normal-java-array
                         try {
                             jsonObject = new JSONObject(response.toString());
-
-
                             jsonArray = jsonObject.getJSONArray("categories");
-
-
 
                         } catch (JSONException e) {
                             e.printStackTrace();
