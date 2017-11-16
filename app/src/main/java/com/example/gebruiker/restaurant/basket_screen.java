@@ -1,6 +1,7 @@
 package com.example.gebruiker.restaurant;
 
 import android.content.SharedPreferences;
+import android.preference.PreferenceManager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.widget.ArrayAdapter;
@@ -9,6 +10,7 @@ import android.widget.ListView;
 import org.json.JSONArray;
 import org.json.JSONException;
 
+import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
@@ -20,30 +22,34 @@ public class basket_screen extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_basket_screen);
 
-            SharedPreferences prefs = getSharedPreferences("settings",MODE_PRIVATE);
+        SharedPreferences settings = this.getSharedPreferences("order", this.MODE_PRIVATE );
 
 
-            //System.out.println("TEST!!!!!!!!!!!!!!!!!!!!!!!!"+prefs);
-            //String s = prefs.getString("item", null);
+        ArrayList<String> list = new ArrayList<String>();
 
 
-        Map<String,?> keys = prefs.getAll();
-        //Map<String, ?> keys = prefs.getAll();
+        try {
+            JSONArray order = new JSONArray(settings);
 
-        List<String> values = new ArrayList<String>();
-        //JSONArray values = new JSONArray(settings.getString("order", none));
+            for (int i=0; i<order.length(); i++) {
+                try {
+                    list.add(order.getString(i));
+                    System.out.println("dfsafsdfadsf"+list);
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+            }
 
-
-        for(Map.Entry<String,?> entry : keys.entrySet()){
-            values.add(entry.getValue().toString());
-            System.out.println("F:DSKLJF:LKSDJF:KJDF:FIDJFHSFJSL:DKFS:DLFKJSD:FLKJS:LDFKJ "+values);
+        } catch (JSONException e) {
+            e.printStackTrace();
         }
+
 
         ArrayAdapter<String> thisAdapter =
                 new ArrayAdapter<String>(
                         getApplicationContext(),
                         R.layout.row_layout,
-                        values
+                        list
                 );
 
         // Assign adapter to ListView
@@ -55,3 +61,20 @@ public class basket_screen extends AppCompatActivity {
 
     }
 
+
+    /*
+
+        Map<String,?> keys = prefs.getAll();
+        System.out.println("@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@"+keys);
+
+
+        List<String> values = new ArrayList<String>();
+        //JSONArray values = new JSONArray(settings.getString("order", none));
+
+
+        for(Map.Entry<String,?> entry : keys.entrySet()){
+            values.add(entry.getValue().toString());
+        }
+
+
+     */
