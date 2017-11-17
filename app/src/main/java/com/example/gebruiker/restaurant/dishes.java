@@ -25,11 +25,10 @@ import com.android.volley.toolbox.Volley;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
-import org.json.JSONTokener;
 
 import java.util.ArrayList;
 
-public class appetizers extends AppCompatActivity {
+public class dishes extends AppCompatActivity {
 
     // added basket to toolbar
     @Override
@@ -103,46 +102,41 @@ public class appetizers extends AppCompatActivity {
                         ListView myList = (ListView) findViewById(R.id.mylist);
                         myList.setAdapter(thisAdapter);
 
-                        myList.setOnItemClickListener(
+                        try {
+                            myList.setOnItemClickListener(
 
-                                new AdapterView.OnItemClickListener() {
+                                    new AdapterView.OnItemClickListener() {
 
-                                    //ArrayList<String> order = new ArrayList<String>();
-                                    //JSONObject order = new JSONObject();
-                                    JSONArray order = new JSONArray();
+                                        SharedPreferences settings = PreferenceManager.getDefaultSharedPreferences(dishes.this);
+                                        String item = settings.getString("order", "");
 
-                                    @Override
-                                    public void onItemClick(AdapterView<?> adapterView, View view, int position, long l) {
-                                        String categoryPicked = "You added " +
-                                                String.valueOf(adapterView.getItemAtPosition(position)) + "to your order";
-                                        Toast.makeText(appetizers.this, categoryPicked, Toast.LENGTH_SHORT).show();
+                                        JSONArray order = new JSONArray(item);
 
 
-                                        SharedPreferences settings = PreferenceManager.getDefaultSharedPreferences(appetizers.this);
-                                        //SharedPreferences settings = getSharedPreferences("order", 0);
-                                        SharedPreferences.Editor editor = settings.edit();
+                                        @Override
+                                        public void onItemClick(AdapterView<?> adapterView, View view, int position, long l) {
+                                            String categoryPicked = "You added " +
+                                                    String.valueOf(adapterView.getItemAtPosition(position)) + "to your order";
+                                            Toast.makeText(dishes.this, categoryPicked, Toast.LENGTH_SHORT).show();
+
+                                            SharedPreferences settings = PreferenceManager.getDefaultSharedPreferences(dishes.this);
+                                            SharedPreferences.Editor editor = settings.edit();
+
+                                            order.put(String.valueOf(adapterView.getItemAtPosition(position)));
+                                            editor.putString("order", String.valueOf(order));
+                                            editor.commit();
+
+    //
+                                        }
+
+                                    });
+                        } catch (Exception e) {
+                            e.printStackTrace();
+                        }
 
 
-                                        order.put(String.valueOf(adapterView.getItemAtPosition(position)));
-
-                                        editor.putString("order", String.valueOf(order));
-                                        editor.commit();
 
 
-
-
-
-//
-//                                        SharedPreferences prefs = appetizers.this.getSharedPreferences("settings", appetizers.MODE_PRIVATE);
-//                                        SharedPreferences.Editor editor = prefs.edit();
-//
-//                                        //editor.putString("item", String.valueOf(order));
-//                                        editor.putString("order", order.toString());
-//                                        editor.commit();
-
-
-                                    }
-                                });
                     }
                 }, new Response.ErrorListener() {
             @Override

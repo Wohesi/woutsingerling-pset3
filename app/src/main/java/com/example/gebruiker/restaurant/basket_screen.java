@@ -24,7 +24,6 @@ public class basket_screen extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_basket_screen);
 
-
         // with a lot of help from the following stack-overflow:
         // https://stackoverflow.com/questions/7175880/how-can-i-store-an-integer-array-in-sharedpreferences
 
@@ -49,7 +48,6 @@ public class basket_screen extends AppCompatActivity {
         } catch (JSONException e) {
             e.printStackTrace();
         }
-
 
         ArrayAdapter<String> thisAdapter =
                 new ArrayAdapter<String>(

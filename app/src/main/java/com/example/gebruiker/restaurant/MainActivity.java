@@ -12,14 +12,12 @@ import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
-import android.widget.Toolbar;
 
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
-import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 
 import org.json.JSONArray;
@@ -27,8 +25,6 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.ArrayList;
-import java.util.Collection;
-import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -98,7 +94,7 @@ public class MainActivity extends AppCompatActivity {
                                                 String.valueOf(adapterView.getItemAtPosition(position));
                                         Toast.makeText(MainActivity.this, categoryPicked, Toast.LENGTH_SHORT).show();
 
-                                            Intent intent = new  Intent(view.getContext(), appetizers.class);
+                                            Intent intent = new  Intent(view.getContext(), dishes.class);
                                             intent.putExtra("category", String.valueOf(adapterView.getItemAtPosition(position)));
                                             startActivity(intent);
                                     }
