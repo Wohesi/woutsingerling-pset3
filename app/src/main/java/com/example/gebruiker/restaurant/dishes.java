@@ -107,8 +107,8 @@ public class dishes extends AppCompatActivity {
 
                                     new AdapterView.OnItemClickListener() {
 
-                                        SharedPreferences settings = PreferenceManager.getDefaultSharedPreferences(dishes.this);
-                                        String item = settings.getString("order", "");
+                                        SharedPreferences settings = dishes.this.getSharedPreferences("order", MODE_PRIVATE);
+                                        String item = settings.getString("order", "[]");
 
                                         JSONArray order = new JSONArray(item);
 
@@ -119,7 +119,7 @@ public class dishes extends AppCompatActivity {
                                                     String.valueOf(adapterView.getItemAtPosition(position)) + "to your order";
                                             Toast.makeText(dishes.this, categoryPicked, Toast.LENGTH_SHORT).show();
 
-                                            SharedPreferences settings = PreferenceManager.getDefaultSharedPreferences(dishes.this);
+                                            SharedPreferences settings = dishes.this.getSharedPreferences("order", MODE_PRIVATE);
                                             SharedPreferences.Editor editor = settings.edit();
 
                                             order.put(String.valueOf(adapterView.getItemAtPosition(position)));
